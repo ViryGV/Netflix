@@ -5,8 +5,8 @@ jdk: openjdk8
 script:
   - echo "Hola Travis"
   - mvn package
-  - chmod 400 "acceso_instancia.pem"
+  - chmod 400 acceso_instancia.pem
   - ssh-keyscan -H 3.12.131.90 >> ~/.ssh/known_hosts
   - ssh-keyscan -H ec2-3-12-131-90.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
   - ssh -i acceso_instancia.pem ubuntu@ec2-3-12-131-90 "rm -rf /var/lib/tomcat8/webapps/Netflix.war"
-  - scp -i "acceso_instancia.pem" target/Netflix-1.0-SNAPSHOT.war ubuntu@ec2-3-12-131-90:/var/lib/tomcat8/webapps/Netflix.war
+  - scp -i acceso_instancia.pem target/Netflix-1.0-SNAPSHOT.war ubuntu@ec2-3-12-131-90:/var/lib/tomcat8/webapps/Netflix.war
